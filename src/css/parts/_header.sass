@@ -1,0 +1,181 @@
+.nav
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 20px
+  position: relative
+  z-index: 4
+  padding-top: 10px
+  padding-bottom: 10px
+  &-list 
+    align-items: center
+    display: none
+    +laptop 
+      display: flex
+      width: 490px
+    +desktopbig 
+      width: 600px
+  &-item 
+    margin: 5px 15px
+    +desktopbig 
+      margin: 5px 30px
+  &-item, & a
+    text-transform: uppercase
+    color: $yellow
+    font-size: 14px
+  &-list-right
+    display: none
+    align-items: center
+    +laptop 
+      display: flex
+      justify-content: flex-end
+      width: 490px
+    +desktopbig 
+      width: 600px
+  &-item-right
+    margin: 5px 15px
+    +desktopbig 
+      margin: 5px 30px
+    & a span
+      color: #ED1C24
+
+  &-ham
+    +laptop 
+      display: none
+    & img 
+      width: 25px
+      +laptop 
+        width: 34px
+  &-cart
+    +laptop 
+      display: none
+    & img 
+      width: 25px
+      +laptop 
+        width: 34px
+  &-logo img
+    width: 145px
+    +laptop
+      width: 160px
+    // +desktop 
+    //   width: 240px
+.nav-dropdown
+  padding: 20px
+  &-small
+    transition: 1s
+    max-height: 0
+    overflow: hidden
+  &-open 
+    transition: 1s
+    max-height: 400px
+    
+
+.nav-mobile
+  background: #B91E24
+  position: absolute
+  width: 100%
+  height: 100vh
+  overflow-y: scroll
+  +laptop 
+    display: none
+  &-link a
+    font-size: 23px
+    font-weight: 400
+    color: white
+.close-x 
+  font-size: 32px
+  color: #F9F8CE
+  display: block
+  margin-top: -8px
+
+.nav-fixed 
+  position: fixed
+  width: 100%
+  z-index: 10
+
+.nav-item-shop
+  position: relative
+  cursor: pointer
+  &-drop 
+    position: absolute
+    background: rgba(0, 0, 0, 0.9)
+    padding: 20px
+    left: -20px
+    top: 34px
+    width: 158px
+    border-radius: 10px
+    & li 
+      margin-bottom: 5px
+    & li:hover 
+      text-decoration: underline
+      transition: 5s
+.cartLogo
+  position: relative
+  cursor: pointer
+  & img 
+    width: 25px
+  &-length
+    position: absolute
+    color: white !important
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 15px
+    height: 15px
+    font-size: 11px
+    border-radius: 50%
+    top: -4px
+    right: -4px
+    background: #ed1c24
+
+.cart-dropdown
+  position: absolute
+  top: 60px
+  width: 100%
+  padding: 10px
+  background: white
+  color: black
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+  +tablet 
+    width: 330px
+    right: 0
+  &-body 
+    border: 1px solid #d8d8d8
+    padding: 10px
+  &-btn 
+    padding: 10px
+    width: 100%
+    display: block
+    background: #202020
+    border: none
+    color: white
+    font-size: 15px
+    transition: 0.5s
+    margin-top: 10px
+    &:hover 
+      background: #111
+      color: #4c4c4c
+  &-item 
+    margin: 10px
+    display: flex
+    gap: 22px
+    justify-content: start
+  &-details
+    & h5 
+      text-transform: uppercase
+      font-weight: normal
+  &-list 
+    max-height: 320px
+    overflow-y: scroll
+
+  &-close 
+    cursor: pointer
+    // align-self: center
+    margin-left: auto
+  &-img-wrap
+    width: 60px
+    height: 80px
+    cursor: pointer
+
+    & img 
+      width: 100%

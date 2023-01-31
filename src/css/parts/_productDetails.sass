@@ -1,0 +1,102 @@
+.productDetails 
+  background: white
+  &-body
+    padding-top: 70px
+    min-height: 600px
+    +tablet2 
+      display: flex
+      max-height: 100vh
+      overflow: hidden
+      overflow-y: scroll
+    +laptop
+      margin: 0 auto
+      position: relative
+      min-height: 600px
+    
+  &-slider
+    overflow-x: hidden
+    display: flex
+    justify-content: center
+    +tablet2
+      display: none
+  &-info 
+    padding: 20px
+    pointer-events: none
+   
+    +tablet2 
+      position: fixed
+      z-index: 5 !important
+      right: 3%
+      width: 43%
+    +laptop
+      right: 6% 
+    +desktop 
+      right: 8%
+    &-title 
+      font-size: 22px
+      font-weight: normal
+      pointer-events: none
+    &-size 
+      font-size: 16px
+      color: #868686
+      margin-top: 10px
+      margin-bottom: 30px
+      pointer-events: none
+    
+    &-text 
+      pointer-events: none
+
+    &-btn 
+      background: #202020 
+      color: #F9F8CE
+      padding: 10px 20px
+      border: none
+      font-family: $secondFont
+      margin-top: 50px
+      transition: 0.5s
+      pointer-events: initial
+      border: 1px #202020 solid
+
+      &:hover 
+        background: white
+        color: black
+        border: 1px black solid
+    &-imgs
+      display: none
+      max-width: 500px
+      
+      +tablet2 
+        display: flex
+        align-items: center
+        // margin-left: 5s0px
+        // overflow-y: scroll
+        flex-direction: column
+        &::-webkit-scrollbar
+          display: none
+      +laptop
+        max-width: 600px
+    &-img 
+      width: 100%
+      margin-bottom: -10px
+  &-sold 
+    font-size: 25px
+    border-radius: 2px
+    border: #e2424d 1px solid 
+    color: #e2424d
+    padding: 6px 8px
+    margin-top: 20px
+    display: inline-block
+  &-remove
+    font-size: 25px
+    border-radius: 2px
+    border: #e2424d 1px solid 
+    color: #e2424d
+    padding: 6px 8px
+    margin-top: 20px
+    display: inline-block
+// .rsis-container
+
+.rsis-image 
+  background-size: cover 
+  background-position: center
+  

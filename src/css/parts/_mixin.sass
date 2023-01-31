@@ -1,0 +1,59 @@
+@function rem($px)
+	@return $px / 16px + 0rem
+
+=phone
+	@media screen and (min-width: $phone)
+		@content
+=phonesmall
+	@media screen and (min-width: $phonesmall)
+		@content
+=phonesmall2
+	@media screen and (min-width: $phonesmall2)
+		@content
+=ham
+	@media screen and (min-width: $ham)
+		@content
+=tablet
+	@media screen and (min-width: $tablet)
+		@content
+=tablet2
+	@media screen and (min-width: $tablet2)
+		@content
+=laptop
+	@media screen and (min-width: $laptop)
+		@content
+=laptopBig
+	@media screen and (min-width: $laptopBig)
+		@content
+=desktop
+	@media screen and (min-width: $desktop)
+		@content
+=desktopbig
+	@media screen and (min-width: $desktopbig)
+		@content
+
+=use-font($family, $size: false, $color: false, $weight: false, $lh: false)
+	font-family: $family, sans-serif
+
+	@if $size
+		font-size: $size
+
+	@if $color
+		color: $color
+
+	@if $weight
+		font-weight: $weight
+
+	@if $lh
+		line-height: $lh
+
+
+=placeholder
+	&::-webkit-input-placeholder
+		@content
+	&:-moz-placeholder
+		@content
+	&::-moz-placeholder
+		@content
+	&::-ms-input-placeholder
+		@content

@@ -1,0 +1,94 @@
+.login
+  background: #202020
+  height: 100vh
+  &-title 
+    max-width: 266px
+    margin: 0 auto
+    padding: 20px
+    // pa dding-top: 70px
+    font-weight: 400
+    font-size: 32px
+    text-align: center
+    color: white
+    +tablet 
+      padding-left: 0
+    +laptop 
+      font-size: 50px
+      padding: 0
+      // padding-top: 100px
+      margin-bottom: 20px
+    +desktop
+      padding-top: 30px
+  &-form 
+    max-width: 500px
+    display: flex
+    padding: 20px
+    gap: 30px
+    flex-direction: column
+    margin: 0 auto
+    padding-bottom: 10px
+  &-input 
+    border: 2px solid #ffffff
+    background: #202020
+    font-size: 16px
+    padding: 10px
+    color: #606060
+    +tablet2
+      font-size: 20px
+    &::placeholder
+      color: #616161
+      font-size: 16px
+      +tablet2
+        font-size: 20px
+  &-btn 
+    background: #4A4A4A
+    text-align: center
+    color: white
+    padding: 10px
+    font-size: 16px
+    width: 100%
+    border: none
+    +tablet2 
+      font-size: 20px
+  &-forgot 
+    max-width: 500px
+    margin: 0 auto
+    text-align: right
+    padding-right: 20px
+    color: #616161
+    margin-bottom: 30px
+    & a 
+      color: inherit
+  &-line
+    border: none 
+    border-bottom: 2px solid #4A4A4A
+  &-bottom 
+    display: flex
+    max-width: 500px
+    flex-direction: column
+    margin: 0 auto
+    padding: 0 20px
+    margin-top: 30px
+  &-google-btn
+    background: #4A4A4A
+    text-align: center
+    color: white
+    padding: 10px
+    font-size: 16px
+    width: 100%
+    border: none
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    +tablet2 
+      font-size: 20px
+    & img 
+      width: 20px
+  &-info 
+    text-align: center 
+    color: white
+    margin-top: 20px
+    font-size: 16px
+    +tablet2 
+      font-size: 20px

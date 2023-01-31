@@ -1,0 +1,66 @@
+
+.pimg-2
+  display: none
+.shop 
+  background: white
+  &-title 
+    max-width: 1200px
+    margin: 0 auto
+    padding: 20px
+    padding-top: 70px
+    font-weight: 400
+    font-size: 32px
+    +laptop 
+      font-size: 50px
+      padding-top: 100px
+    +desktop
+      padding-top: 130px
+  &-text 
+    max-width: 700px
+    font-weight: 300
+    padding: 20px
+    padding-top: 0
+
+  &-inner 
+    background: white
+  &-category
+    background: white
+    &-title 
+      text-transform: capitalize
+
+  &-products
+    &-list 
+      max-width: 1200px
+      display: flex
+      flex-wrap: wrap 
+      justify-content: space-evenly
+      padding: 20px
+      min-height: 100px
+    &-item 
+      width: 300px
+      margin-bottom: 40px
+      position: relative
+      & p 
+        font-weight: 300
+        font-size: 18px
+      &-img-wrap
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+        margin-bottom: 15px
+        height: 375px
+        &:hover 
+          .pimg-1
+            display: none
+          .pimg-2 
+            display: block
+        & img 
+          width: 100%
+          height: 375px
+    &-sold
+      position: absolute
+      top: 10px
+      right: 10px
+      background: transparent
+      border-radius: 2px
+      color: #e2424d
+      border: 1px solid #e2424d
+      padding: 6px 8px

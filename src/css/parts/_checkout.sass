@@ -1,0 +1,108 @@
+.checkout 
+  background: #f4f3f2
+  &-head 
+    padding: 20px
+    display: flex
+    justify-content: space-between
+    & img 
+      width: 120px
+      +tablet 
+        width: 150px
+    &-right 
+      font-size: 12px
+      display: flex
+      gap: 6px
+      align-items: center
+      color: #1b6dd6
+  &-list 
+    max-width: 700px
+    background: white
+    padding: 15px
+    margin: 0 auto
+    margin-bottom: 20px
+    &-item 
+      display: flex
+      padding: 10px 0
+      position: relative
+      border-bottom: 1px solid rgba(0,0,0, 0.1)
+      & img 
+        width: 80px
+      &-price 
+        font-size: 12px
+        margin-left: auto
+      & h5 
+        font-size: 13px
+        font-weight: normal
+        text-transform: uppercase
+      & h6 
+        font-size: 12px
+        font-weight: 200
+        color: #202020
+      &-close 
+        position: absolute
+        cursor: pointer
+        bottom: 20px
+        right: 10px
+        font-size: 11px
+        color: #000
+  &-total 
+    display: flex
+    flex-direction: column
+    margin-top: 20px
+    &-item 
+      display: flex
+      justify-content: space-between
+    &-left , &-right
+      font-size: 12px
+      font-weight: 200
+      color: #202020
+    &-item:last-child
+      border-bottom: 1px solid rgba(0,0,0, 0.1)
+      padding-bottom: 10px
+    &-grand
+      display: flex
+      font-size: 18px
+      justify-content: space-between
+      margin-top: 10px
+  &-orderform
+    padding: 20px
+    max-width: 700px
+    margin: 0 auto
+    background: white
+    margin-bottom: 20px
+    min-height: 300px
+    &-title 
+      font-weight: normal
+    &-btn 
+      background: #000
+      border: none
+      color: white  
+      padding: 10px 20px
+      margin-top: 10px
+      display: block
+      margin-left: auto
+      &:disabled
+        background: grey
+  &-input 
+    display: flex
+    flex-direction: column
+    padding-top: 10px
+  &-input-label 
+    font-size: 12px
+  &-input-input
+    border: none
+    padding: 10px
+    padding-left: 0
+    padding-top: 5px
+    border-bottom: 1px solid rgba(0,0,0, 0.1)
+    &:focus
+      outline: none
+      border-bottom: 1px solid #000
+.stripe-btn
+  padding: 10px
+  color: white
+  border: none
+  background: #0570de
+  margin-top: 10px
+  margin-left: auto
+  display: block

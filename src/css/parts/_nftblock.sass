@@ -1,0 +1,100 @@
+.nftblock
+  display: flex
+  width: 100%
+  flex-direction: column
+  +laptop
+    flex-direction: row
+  &-left 
+    background: #C1BFB1
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: 100%
+    &-top 
+      color: #FF0000
+      margin: 20px
+      text-align: center
+      font-family: $secondFont
+      font-size: 34px
+      +laptop 
+        font-size: 64px
+    &-title 
+      font-size: 40px
+      font-weight: 400
+      font-family: $secondFont
+      text-align: center
+      margin-bottom: 20px
+      +laptop
+        font-size: 64px
+        margin-bottom: 40px
+    &-text 
+      text-align: center
+      padding: 20px
+      padding-top: 0
+      font-family: $secondFont
+      +laptop
+        max-width: 500px
+    &-btn 
+      background: #F9F8CE
+      border-radius: 9px
+      border: none
+      padding: 10px
+      max-width: 209px
+      font-weight: 700
+      font-size: 14px
+      line-height: 18px
+      letter-spacing: 0.265em
+      margin-top: 20px
+      margin-bottom: 50px
+      +laptop
+        margin-top: 40px
+        margin-bottom: 120px
+    &-bottom 
+      font-size: 18px
+      line-height: 30px
+      text-align: center
+      letter-spacing: 0.265em
+      margin-bottom: 100px
+      +laptop
+        font-size: 24px
+        margin-bottom: 150px
+      & a 
+        color: #FF0000
+
+
+  &-right
+    width: 100%
+    background: #202020
+    padding: 30px
+    +laptop
+      padding: 50px 89px
+      padding-bottom: 100px
+    &-inner 
+      border: 3px solid #F6F6D3
+      border-radius: 7px  
+      padding: 30px
+      display: flex
+      align-items: center
+      position: relative
+      justify-content: center
+      flex-direction: column
+      max-width: 300px
+      margin: 0 auto
+      +laptop
+        padding: 120px 55px
+        max-width: 540px
+      & img 
+        width: 100%
+        max-width: 420px
+        margin: 0 auto
+    &-mini 
+      position: absolute 
+      bottom: -1px
+      left: -1px
+      color: $yellow
+      border: 3px solid #F9F9CF
+      border-radius: 5px
+      padding: 8px
+      display: none
+      +laptop 
+        display: block

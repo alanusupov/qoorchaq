@@ -1,0 +1,76 @@
+.story
+  background: url('../media/wallbottom.jpeg')
+  background-size: cover
+  min-height: 400px
+  background-position: left
+  padding-bottom: 50px
+  &-info 
+    display: flex
+    align-items: center
+    flex-direction: column
+    max-width: 420px
+    +laptop 
+      max-width: 1200px
+      margin: 0 auto
+      align-items: flex-start
+  &-title 
+    font-family: $secondFont
+    max-width: 316px
+    font-size: 35px
+    padding-top: 70px
+    margin-left: 30px
+    color: $yellow
+    margin-bottom: 50px
+    +laptop
+      font-size: 64px
+      padding-top: 140px
+      max-width: 650px
+      margin-bottom: 70px
+
+  &-mid 
+    display: flex
+    max-width: 322px
+    align-items: center
+    gap: 12px
+    margin-left: 30px
+    +laptop 
+      max-width: 640px
+      gap: 34px
+    & img 
+      width: 75px
+      +laptop
+        width: 112px
+    & p 
+      max-width: 250px
+      font-size: 17px
+      +laptop 
+        font-size: 24px
+        max-width: 430px
+  &-btn
+    width: 130px
+    background: transparent
+    border: 3px solid #fff
+    font-family: $secondFont
+    font-size: 18px
+    color: #fff
+    display: inline-block
+    text-align: center
+    padding: 13px 0
+    text-transform: uppercase
+    cursor: pointer
+    margin: 50px 0
+    display: block
+    margin-bottom: 100px
+    +phone 
+      width: 150px
+    +laptop
+      width: 220px
+      font-size: 24px
+      padding: 15px 0
+      margin-top: 60px
+      margin-left: 30px
+    &:hover 
+      color: #fff
+      background: #000
+      transition: 0.5s
+      border: 3px solid black

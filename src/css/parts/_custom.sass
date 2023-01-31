@@ -1,0 +1,60 @@
+.custom
+  background: white
+  &-title 
+    max-width: 640px
+    margin: 0 auto
+    padding: 20px
+    padding-top: 70px
+    font-weight: 400
+    font-size: 32px
+    text-align: center
+    +tablet 
+      padding-left: 0
+    +laptop 
+      font-size: 50px
+      padding: 0
+      padding-top: 100px
+      margin-bottom: 20px
+    +desktop
+      padding-top: 130px
+  &-info 
+    max-width: 640px
+    padding: 20px
+    margin: 0 auto
+    padding-top: 0
+    +tablet 
+      padding: 0
+  &-text 
+    margin: 0
+    font-weight: 200
+    font-size: 16px
+    text-align: center
+    margin-bottom: 40px
+    +laptop 
+      font-size: 18px
+  &-form
+    display: flex
+    max-width: 640px
+    padding: 20px
+    margin: 0 auto
+    padding-top: 0
+    flex-direction: column
+    margin-bottom: 200px
+    +tablet 
+      padding: 0
+  &-input
+    width: 100%
+    padding: 10px
+    margin: 10px 0
+    border-radius: 12px
+    border: 1px solid gray
+    font-size: 18px
+    font-weight: 100
+  &-btn 
+    background: black
+    font-size: 18px
+    border: none
+    border-radius: 10px
+    padding: 10px
+    color: white  
+    margin-top: 10px
