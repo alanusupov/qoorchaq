@@ -1,8 +1,44 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { createDoc, getDocById, updateDocument } from "../api/firebaseFuncs";
 import Header from "../components/Header";
 import icon from "../media/google-icon.svg";
-function Login() {
+import { signInWithGoogle } from "../services/auth";
+
+interface IRegData {}
+
+function Register() {
+  const [regData, setRegData] = useState<IRegData>({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setRegData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const handleGoogleLogin = async () => {
+    try {
+      const { user } = await signInWithGoogle();
+      console.log(user);
+      const userRes = await getDocById(user.email as string, "users");
+
+      if (userRes) {
+        await updateDocument(
+          { email: user.email },
+          "users",
+          user.email as string
+        );
+      } else {
+        await createDoc({ email: user.email }, "users", user.email);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="login">
       {/* <Header backg="black" /> */}
@@ -13,12 +49,16 @@ function Login() {
           className="login-input"
           placeholder="E-mail"
           type="email"
+          name="email"
+          onChange={handleChange}
         />
         <input
           required
           className="login-input"
           placeholder="Password"
           type="password"
+          name="password"
+          onChange={handleChange}
         />
         <button className="login-btn">Register</button>
       </form>
@@ -27,7 +67,7 @@ function Login() {
       </div>
       <hr className="login-line" />
       <div className="login-bottom">
-        <button className="login-google-btn">
+        <button onClick={handleGoogleLogin} className="login-google-btn">
           <img src={icon} alt="google icon" />
           Signup with Google
         </button>
@@ -39,4 +79,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

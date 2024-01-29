@@ -11,14 +11,15 @@ import {
 
 export interface IProduct {
   id: string;
-  category: string;
-  type: string;
+  category?: string;
+  type?: string;
   img: string[];
   name: string;
   desc: string;
   price: number;
-  size: "xs" | "s" | "m" | "l" | "xl" | "xxl";
+  size?: "xs" | "s" | "m" | "l" | "xl" | "xxl";
   sold: boolean;
+  tags?: string[];
 }
 
 export const createDoc = async () => {
@@ -44,6 +45,7 @@ export const getProductsApi = async () => {
         category: doc.data().category,
         type: doc.data().type,
         desc: doc.data().desc,
+        tags: doc.data().tags,
       });
       // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
     });
@@ -68,6 +70,7 @@ export const getProductApi = async (id: string) => {
         category: docSnap.data().category,
         type: docSnap.data().type,
         desc: docSnap.data().desc,
+        tags: docSnap.data().tags,
       };
       return productObj;
       //return docSnap.data() as IProduct

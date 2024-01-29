@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { IProduct } from "../../api/shopApi";
+import { useAppSelector } from "../../store/hooks";
 import { removeFromCart } from "../../store/slices/cartSlice";
 
 type Props = {
@@ -9,6 +10,8 @@ type Props = {
 
 function CheckoutList({ cartItems }: Props) {
   const dispatch = useDispatch();
+
+  const { shippingPrice } = useAppSelector(state => state.cart);
   return (
     <div className="checkout-list">
       {cartItems.length > 0 &&
@@ -39,7 +42,9 @@ function CheckoutList({ cartItems }: Props) {
         </div>
         <div className="checkout-total-item">
           <div className="checkout-total-left">Shipping</div>
-          <div className="checkout-total-right">Free</div>
+          <div className="checkout-total-right">
+            {shippingPrice > 0 ? shippingPrice + " USD" : "Free"}
+          </div>
         </div>
       </div>
       <div className="checkout-total-grand">
@@ -47,7 +52,7 @@ function CheckoutList({ cartItems }: Props) {
         <div>
           {cartItems.reduce((a, b) => {
             return a + b.price;
-          }, 0)}{" "}
+          }, 0) + shippingPrice}{" "}
           USD
         </div>
       </div>

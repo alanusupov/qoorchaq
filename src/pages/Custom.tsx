@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
+import { createDoc } from "../api/firebaseFuncs";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 function Custom() {
   const [form, setForm] = useState({});
-
+  const [loading, setLoading] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setForm(prev => {
@@ -15,8 +16,19 @@ function Custom() {
     });
   };
 
-  const handleSend = () => {
-    console.log("asd");
+  const handleSend = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const customFormData = {
+      ...form,
+      date: Date.now(),
+    };
+    setLoading(true);
+    try {
+      await createDoc(customFormData, "customizeRequests");
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,7 +45,7 @@ function Custom() {
           to be contacted and start creating a unique handmade piece of art.
         </p>
       </div>
-      <form className="custom-form">
+      <form onSubmit={e => handleSend(e)} className="custom-form">
         <input
           type="text"
           placeholder="Name"
@@ -43,9 +55,9 @@ function Custom() {
           onChange={handleChange}
         />
         <input
-          type="email"
-          name="email"
-          placeholder="Email"
+          type="text"
+          name="telegram"
+          placeholder="Telegram"
           required
           className="custom-input"
           onChange={handleChange}
@@ -57,8 +69,8 @@ function Custom() {
           className="custom-input"
           onChange={handleChange}
         />
-        <button onSubmit={handleSend} className="custom-btn">
-          Send
+        <button disabled={loading} className="custom-btn">
+          {loading ? "loading" : "Send"}
         </button>
       </form>
       <Footer />

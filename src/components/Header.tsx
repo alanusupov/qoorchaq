@@ -7,6 +7,8 @@ import DropdownMenu from "./items/DropdownMenu";
 import { useDispatch } from "react-redux";
 import { addItemsToCart, removeFromCart } from "../store/slices/cartSlice";
 import { useAppSelector } from "../store/hooks";
+import { logout } from "../services/auth";
+import CartImage from "./items/CartImage";
 
 interface Props {
   active?: string;
@@ -27,7 +29,6 @@ const Header: React.FC<Props> = ({ backg, active }) => {
 
   const { cartItems } = useAppSelector(state => state.cart);
   const { user } = useAppSelector(state => state.user);
-  console.log(user);
 
   const dispatch = useDispatch();
   function useWindowSize(): Size {
@@ -100,6 +101,9 @@ const Header: React.FC<Props> = ({ backg, active }) => {
                   <Link to="/shop/womens">Womens</Link>
                 </li>
                 <li>
+                  <Link to="/shop/shyrdaks">Shyrdaks</Link>
+                </li>
+                {/* <li>
                   <Link to="/shop/unisex">Unisex</Link>
                 </li>
                 <li>
@@ -107,7 +111,7 @@ const Header: React.FC<Props> = ({ backg, active }) => {
                 </li>
                 <li>
                   <Link to="/shop">All Products</Link>
-                </li>
+                </li> */}
               </ul>
             )}
           </li>
@@ -115,9 +119,9 @@ const Header: React.FC<Props> = ({ backg, active }) => {
             <Link to="/story">Storytellings</Link>
           </li>
 
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/journal">BLOG</Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link to="/customize">CUSTOM</Link>
           </li>
@@ -137,7 +141,12 @@ const Header: React.FC<Props> = ({ backg, active }) => {
             </a>
           </li>
           <li className="nav-item-right">
-            <Link to="/login">Login</Link>
+            {user ? (
+              <></>
+            ) : (
+              // <Link to="/orders">Orders</Link>
+              <Link to="/login">Login</Link>
+            )}
           </li>
           <li
             onClick={() => setCartOpen(!cartOpen)}
@@ -171,7 +180,8 @@ const Header: React.FC<Props> = ({ backg, active }) => {
                       <div
                         onClick={() => navigate(`/products/${item.id}`)}
                         className="cart-dropdown-img-wrap">
-                        <img src={item.img[0]} alt={item.name} />
+                        <CartImage src={item.img[0]} alt={item.name} />
+                        {/* <img src={item.img[0]} alt={item.name} /> */}
                       </div>
                       <div className="cart-dropdown-details">
                         <h5>{item.name + " " + item.type}</h5>
@@ -205,9 +215,10 @@ const Header: React.FC<Props> = ({ backg, active }) => {
         <div className="nav-mobile">
           <DropdownMenu title="Womens" link="/shop/womens" />
           <DropdownMenu title="Mens" link="/shop/mens" />
-          <DropdownMenu title="Unisex" link="/shop/unisex" />
-          <DropdownMenu title="Accessories" link="/shop/accessories" />
-          <DropdownMenu title="All Products" link="/shop" />
+          <DropdownMenu title="Shyrdaks" link="/shop/shyrdaks" />
+          {/* <DropdownMenu title="Unisex" link="/shop/unisex" /> */}
+          {/* <DropdownMenu title="Accessories" link="/shop/accessories" /> */}
+          {/* <DropdownMenu title="All Products" link="/shop" /> */}
         </div>
       ) : null}
     </header>

@@ -24,10 +24,15 @@ function CheckoutForm({}: Props) {
       },
       redirect: "if_required",
     });
+
     if (error) {
       setMessage(error.message as string);
     } else {
-      console.log("redirected");
+      console.log(paymentIntent);
+      if (paymentIntent && paymentIntent.status === "succeeded") {
+        console.log("success");
+      }
+      // console.log("redirected");
     }
     setIsProcessing(false);
   };

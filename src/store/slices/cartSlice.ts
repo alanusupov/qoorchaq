@@ -7,10 +7,12 @@ import { useRef } from "react";
 // }
 export interface CartState {
   cartItems: IProduct[];
+  shippingPrice: number;
 }
 
 const initialState: CartState = {
   cartItems: [],
+  shippingPrice: 0,
 };
 // const itemsRef = useRef(items);
 // itemsRef.current = items;
@@ -29,12 +31,20 @@ export const cartSlice = createSlice({
         item => item.id !== action.payload
       );
     },
+    changeShippingPrice: (state, action: PayloadAction<number>) => {
+      state.shippingPrice = action.payload;
+    },
     // increment: state => {
     //   state.value += 1;
     // },
   },
 });
 
-export const { addToCart, removeFromCart, addItemsToCart } = cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  addItemsToCart,
+  changeShippingPrice,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

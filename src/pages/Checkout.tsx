@@ -7,17 +7,19 @@ import Footer from "../components/Footer";
 import logo from "../media/navlogo-black.svg";
 import { useAppSelector } from "../store/hooks";
 import { addItemsToCart } from "../store/slices/cartSlice";
+
 type Props = {};
 
 export interface IOrderForm {
   email: string;
-  country: string;
+  country: any;
   firstName: string;
   lastName: string;
   address: string;
   postalCode: string;
   city: string;
   number: string;
+  telegram: string;
 }
 
 function Checkout({}: Props) {
@@ -43,12 +45,35 @@ function Checkout({}: Props) {
     postalCode: "",
     city: "",
     number: "",
+    telegram: "",
   });
+
+  // const getShippingPrice = () => {
+  //   switch (orderForm.country.label.toLowerCase()) {
+  //     case "kyrgyzstan":
+  //       return 0;
+  //     case "kazakhstan":
+  //       return 50;
+  //     case "uzbekizstan":
+  //       return 50;
+  //     case "russia":
+  //       return 50;
+
+  //     // case 'd'
+  //     //   break;
+
+  //     default:
+  //       return 0;
+  //   }
+  // };
+  // console.log(orderForm.country, "mola");
 
   return (
     <div className="checkout">
       <div className="checkout-head">
-        <img src={logo} alt="qoorchaq logo" />
+        <Link to="/">
+          <img src={logo} alt="qoorchaq logo" />
+        </Link>
         <Link className="checkout-head-right" to="/shop">
           Continue shopping{" "}
           <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">

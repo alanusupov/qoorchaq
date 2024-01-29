@@ -51,11 +51,11 @@ const Shop = (props: Props) => {
                 id={product.id}
                 desc={product.desc}
                 img={product.img}
-                category={product.category}
-                type={product.type}
+                category={product.category as string}
+                type={product.type as string}
                 price={product.price}
                 sold={product.sold}
-                size={product.size}
+                size={product.size as string}
               />
             ))
           ) : (

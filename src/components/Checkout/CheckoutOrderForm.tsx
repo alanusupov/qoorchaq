@@ -4,6 +4,9 @@ import Select from "react-select";
 import { IOrderForm } from "../../pages/Checkout";
 import Input from "../items/Input";
 import CheckoutPayment from "./CheckoutPayment";
+import { useDispatch } from "react-redux";
+import { changeShippingPrice } from "../../store/slices/cartSlice";
+import { getCountryPrice } from "../../utils/helperFuncs";
 
 type Props = {
   orderForm: IOrderForm;
@@ -12,8 +15,9 @@ type Props = {
 };
 
 function CheckoutOrderForm({ checkoutPrice, orderForm, setOrderForm }: Props) {
-  const [step, setStep] = useState<"address" | "payment">("payment");
+  const [step, setStep] = useState<"address" | "payment">("address");
   const options = useMemo(() => countryList().getData(), []);
+  const dispatch = useDispatch();
   console.log(orderForm);
 
   const checkForm = () => {
@@ -26,8 +30,13 @@ function CheckoutOrderForm({ checkoutPrice, orderForm, setOrderForm }: Props) {
     });
   };
 
-  console.log(checkForm());
-
+  const onCountryChange = (value: Record<string, string>) => {
+    setOrderForm((prev: IOrderForm) => ({
+      ...prev,
+      country: value,
+    }));
+    dispatch(changeShippingPrice(getCountryPrice(value.label)));
+  };
   return (
     <div className="checkout-orderform">
       <h3 className="checkout-orderform-title">
@@ -69,12 +78,7 @@ function CheckoutOrderForm({ checkoutPrice, orderForm, setOrderForm }: Props) {
             }}
             options={options}
             value={orderForm.country}
-            onChange={(value: any) =>
-              setOrderForm((prev: IOrderForm) => ({
-                ...prev,
-                country: value,
-              }))
-            }
+            onChange={(value: Record<string, string>) => onCountryChange(value)}
           />
           <Input
             name="email"
@@ -86,6 +90,17 @@ function CheckoutOrderForm({ checkoutPrice, orderForm, setOrderForm }: Props) {
             }
             placeholder="Email"
             value={orderForm.email}
+          />
+          <Input
+            name="telegram"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setOrderForm((prev: IOrderForm) => ({
+                ...prev,
+                [e.target.name]: e.target.value,
+              }))
+            }
+            placeholder="Telegram"
+            value={orderForm.telegram}
           />
           <Input
             name="firstName"
@@ -161,7 +176,7 @@ function CheckoutOrderForm({ checkoutPrice, orderForm, setOrderForm }: Props) {
           </button>
         </div>
       ) : (
-        <CheckoutPayment checkoutPrice={checkoutPrice} />
+        <CheckoutPayment orderForm={orderForm} checkoutPrice={checkoutPrice} />
       )}
     </div>
   );

@@ -14,36 +14,35 @@ import Spinner from "../components/items/Spinner";
 import CustomDetailsForm from "../components/items/CustomDetailsForm";
 import { getNestedDoc } from "../api/firebaseFuncs";
 
-function ProductDetails() {
+interface IShyrdak {
+  id: string;
+  type: string;
+  name: string;
+  desc: string;
+  price: number;
+  img: string[];
+  tags: string[];
+  sold: boolean;
+}
+
+function ShyrdakDetails() {
   const { id } = useParams();
-  const [product, setProduct] = useState<IProduct | null>(null);
+  const [product, setProduct] = useState<IShyrdak | null>(null);
   const { cartItems } = useAppSelector(state => state.cart);
   const dispatch = useDispatch();
-  // useEffect(() => {
-  //   const getProduct = async () => {
-  //     const productDetail = await getProductApi(id as string);
-  //     setProduct(productDetail);
-  //   };
-
-  //   getProduct();
-  // }, [id]);'
-
-  // console.log(product);
-  // console.log(window.location.pathname.split("/"));
+  console.log(product);
 
   useEffect(() => {
     let flag = false;
     const getProduct = async () => {
       const productDetail = await getNestedDoc(
         "products",
-        "womens",
+        "shyrdaks",
         "items",
         id as string
       );
-      console.log(productDetail, "dertail");
-
       if (productDetail) {
-        setProduct(productDetail as IProduct);
+        setProduct(productDetail as IShyrdak);
       }
     };
     if (!flag) {
@@ -54,6 +53,8 @@ function ProductDetails() {
       flag = true;
     };
   }, [id]);
+  // console.log(product);
+
   const imgs = useMemo(() => {
     return product?.img.map(item => {
       return {
@@ -106,13 +107,13 @@ function ProductDetails() {
           )}
           <div className="productDetails-info">
             <h3 className="productDetails-info-title">
-              {product.name + " " + product.type}
+              {product.name + " " + "SHYRDAK"}
             </h3>
             <h4 className="productDetails-info-price">${product.price} USD</h4>
             <hr className="productDetails-info-line" />
-            <p className="productDetails-info-size">
-              Size: {product.size && product.size.toUpperCase()}
-            </p>
+            {/* <p className="productDetails-info-size">
+              Size: {product.size.toUpperCase()}
+            </p> */}
             <p className="productDetails-info-text">{product.desc}</p>
             {product.tags && (
               <div className="productDetails-info-tags">
@@ -138,7 +139,7 @@ function ProductDetails() {
                 SOLD
               </button>
             )}
-            <CustomDetailsForm />
+            <CustomDetailsForm text="Sold? Want a custom design? Customize your own Qoorchaq shyrdak now!" />
           </div>
         </div>
       ) : (
@@ -152,4 +153,4 @@ function ProductDetails() {
   );
 }
 
-export default ProductDetails;
+export default ShyrdakDetails;

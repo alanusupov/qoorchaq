@@ -18,6 +18,9 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./store/slices/userSlice";
 import { auth } from ".";
 import { useAppSelector } from "./store/hooks";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { appRoute } from "./constants/app";
+import ShyrdakDetails from "./pages/ShyrdakDetails";
 function App(): JSX.Element {
   const { user } = useAppSelector(state => state.user);
 
@@ -36,17 +39,32 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route element={<HeaderLayout />}>
-            <Route path="/about" element={<About />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/customize" element={<Custom />} />
-            <Route path="/shop/:id" element={<ShopCategory />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+          <Route
+            element={
+              <ProtectedRoute allowed={!!user} redirectTo={appRoute.Login} />
+            }>
+            <Route path={appRoute.Checkout} element={<Checkout />} />
+            <Route path="/completion" element={<PaymentCompletion />} />
           </Route>
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/completion" element={<PaymentCompletion />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<HeaderLayout />}>
+            <Route path={appRoute.About} element={<About />} />
+            <Route path={appRoute.Shop} element={<Shop />} />
+            <Route path={appRoute.Custom} element={<Custom />} />
+            <Route path={appRoute.ShopCategory} element={<ShopCategory />} />
+            <Route path={appRoute.WomensDetails} element={<ProductDetails />} />
+            <Route path={appRoute.MensDetails} element={<ProductDetails />} />
+            <Route
+              path={appRoute.ShyrdakDetails}
+              element={<ShyrdakDetails />}
+            />
+          </Route>
+          <Route
+            element={
+              <ProtectedRoute allowed={!user} redirectTo={appRoute.Home} />
+            }>
+            <Route path={appRoute.Login} element={<Login />} />
+            <Route path={appRoute.Register} element={<Register />} />
+          </Route>
 
           <Route path="*" element={<p>There's nothing here: 404!</p>} />
         </Routes>

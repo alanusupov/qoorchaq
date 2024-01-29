@@ -15,10 +15,10 @@ const Intro = (props: Props) => {
             <span> COMING SOON!</span>
           </h1>
           <div className="intro-btn-wrap">
-            <Link className="intro-btn1" to="/">
+            <Link className="intro-btn1" to="/shop">
               Preview Shop
             </Link>
-            <Link className="intro-btn2" to="/">
+            <Link className="intro-btn2" to="/about">
               Our Story
             </Link>
           </div>
